@@ -56,40 +56,37 @@ def handle_userinput(user_question):
     response = st.session_state.conversation({'question': user_question})
     st.write(response)
 
+# Main function
 def main():
     load_dotenv()
-    st.set_page_config(page_title = 'Chat with PDFs', page_icon= ':books:')
+    st.set_page_config(page_title='College Query Chat', page_icon='🎓')
     if "conversation" not in st.session_state:
         st.session_state.conversation = None
 
-    st.header('Chat with multiple PDFs :books:')
-    message('Hello robot', is_user = True)
-    message("Hello Human")
+    st.header('Admission Query Chat 🎓')
+    message('Hello, how can I assist you today?', is_user=True)
+    message("Hello! I'm here to help you with your college queries.")
 
-    user_question = st.text_input('Ask a ques about your docs')
+    user_question = st.text_input('Ask a question about college')
     if user_question:
         handle_userinput(user_question)
-    
 
     with st.sidebar:
-        st.subheader('your documents')
-        pdf_docs = st.file_uploader('Upload your pdf here and click on "process": ', accept_multiple_files=True)
+        st.subheader('Your Documents')
+        pdf_docs = st.file_uploader('Upload college document here and click on "Process": ', accept_multiple_files=True)
         if st.button("Process"):
             with st.spinner('Processing'):
-                # get pdf text
+                # Get PDF text
                 raw_text = get_pdf_text(pdf_docs)
-                #st.write(raw_text)
-
-                #get text chunk 
+                
+                # Get text chunks
                 text_chunks = get_text_chunks(raw_text)
-                #st.write(text_chunks)
-
-                #create vector store 
+                
+                # Create vector store
                 vectorstore = get_vectorstore(text_chunks)
-
-                #create conversation chain 
+                
+                # Create conversation chain
                 st.session_state.conversation = get_conversation_chain(vectorstore)
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
-
