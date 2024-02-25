@@ -54,4 +54,4 @@ streamlit run app.py
 
 ## Author
 
-[Your Name](https://github.com/bansalgul)
+[Gul Bansal](https://github.com/bansalgul)
