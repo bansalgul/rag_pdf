@@ -11,3 +11,4 @@ transformers
 openai==1.10.0
 tiktoken
 python-dotenv
+sentence-transformers
