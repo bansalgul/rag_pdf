@@ -54,7 +54,7 @@ def get_conversation_chain(vectorstore):
 
 def handle_userinput(user_question):
     response = st.session_state.conversation({'question': user_question})
-    st.write(response)
+    st.write(response['answer'])
 
 # Main function
 def main():
