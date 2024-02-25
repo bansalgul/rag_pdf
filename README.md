@@ -1,7 +1,3 @@
-Here's a beautiful `README.md` file for your Streamlit application:
-
----
-
 # College Q&A Chatbot
 
 Welcome to the College Q&A Chatbot! This application allows you to ask questions about colleges and get instant responses based on the provided college information in PDF documents.
